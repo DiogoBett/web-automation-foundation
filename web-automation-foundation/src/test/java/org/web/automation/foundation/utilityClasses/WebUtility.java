@@ -1,22 +1,15 @@
 package org.web.automation.foundation.utilityClasses;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.ios.IOSDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.management.BaseOperatingSystemImpl;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class WebUtility {
 
@@ -34,11 +27,11 @@ public class WebUtility {
 
         switch(browser) {
 
-            case "Chrome":
+            case "CHROME":
                 driver = new ChromeDriver();
                 break;
 
-            case "Firefox":
+            case "FIREFOX":
                 driver = new FirefoxDriver();
                 break;
 
@@ -48,28 +41,23 @@ public class WebUtility {
 
         }
 
-        wait = new WebDriverWait(driver, 60);
+        wait = new WebDriverWait(driver, 60); // Creates a Web Driver Wait
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); // Set Find Element Timeout
         driver.manage().deleteAllCookies(); // Clear Browser Cookies
         driver.manage().window().maximize(); // Maximize Browser Window
-
 
     }
 
     // Web Utility Methods
     public static WebElement findElementByClassAndText(String elementClass, String elementText) {
 
-        List<WebElement> elements;
-        WebElement foundElement = null;
-            elements = driver.findElements(By.className(elementClass));
+        String xpath = "//*[contains(@class, '" + elementClass + "')]//*[contains(text(),'" + elementText + "')]";
+        return driver.findElement(By.xpath(xpath));
+    }
 
-            for (WebElement element : elements) {
-                if (element.getAttribute("name").contains(elementText)) {
-                    foundElement = element;
-                    break;
-                }
-            }
+    public static WebElement findElementByDataTestID(String elementText) {
 
-            return foundElement;
+        return driver.findElement(By.xpath("//*[@data-test-id='" + elementText + "']"));
     }
 
     public static String randomNumber() {

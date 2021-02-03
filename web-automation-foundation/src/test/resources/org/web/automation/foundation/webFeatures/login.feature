@@ -8,4 +8,3 @@ Feature: Web [Insert Feature Name Here]
     And I do something in the Website
     When I do this in the Website
     Then This should happen
-    And I should close the Browser
