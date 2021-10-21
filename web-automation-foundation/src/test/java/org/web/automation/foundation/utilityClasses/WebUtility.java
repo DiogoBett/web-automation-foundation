@@ -1,6 +1,7 @@
 package org.web.automation.foundation.utilityClasses;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -57,6 +58,16 @@ public class WebUtility {
     public static WebElement findElementByAttribute(String attributeName, String attributeValue) {
 
         return driver.findElement(By.xpath("//*[@" + attributeName + "='" + attributeValue + "']"));
+    }
+
+    public static void validateElementTextEquals(WebElement element, String elementText) {
+
+        Assert.assertEquals(element.getText(), elementText);
+    }
+
+    public static void validateElementTextContains(WebElement element, String elementText) {
+
+        Assert.assertTrue(element.getText().contains(elementText));
     }
 
     public static void takeScreenshot(String scenarioId) {
