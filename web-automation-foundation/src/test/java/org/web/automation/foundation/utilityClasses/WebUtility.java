@@ -36,6 +36,10 @@ public class WebUtility {
                 driver = new FirefoxDriver();
                 break;
 
+            case "EXAMPLE":
+                // driver = new ExampleDriver();
+                break;
+
             default:
                 driver = new ChromeDriver();
                 System.out.println("Default Browser is being used");
@@ -129,4 +133,5 @@ public class WebUtility {
 
         return properties.getProperty(key);
     }
+
 }
