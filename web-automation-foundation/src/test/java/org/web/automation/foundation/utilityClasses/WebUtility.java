@@ -49,15 +49,14 @@ public class WebUtility {
     }
 
     // Web Utility Methods
-    public static WebElement findElementByClassAndText(String elementClass, String elementText) {
+    public static WebElement findElementByText(String elementText) {
 
-        String xpath = "//*[contains(@class, '" + elementClass + "')]//*[contains(text(),'" + elementText + "')]";
-        return driver.findElement(By.xpath(xpath));
+        return driver.findElement(By.xpath("//*[contains(text(),'" + elementText + "')]"));
     }
 
-    public static WebElement findElementByDataTestID(String elementText) {
+    public static WebElement findElementByAttribute(String attributeName, String attributeValue) {
 
-        return driver.findElement(By.xpath("//*[@data-test-id='" + elementText + "']"));
+        return driver.findElement(By.xpath("//*[@" + attributeName + "='" + attributeValue + "']"));
     }
 
     public static void takeScreenshot(String scenarioId) {
