@@ -50,14 +50,10 @@ public class WebUtility {
     }
 
     // Web Utility Methods
-    public static WebElement findElementByText(String elementText) {
 
-        return driver.findElement(By.xpath("//*[contains(text(),'" + elementText + "')]"));
-    }
+    public static void validatePageUrl(String pageUrl) {
 
-    public static WebElement findElementByAttribute(String attributeName, String attributeValue) {
-
-        return driver.findElement(By.xpath("//*[@" + attributeName + "='" + attributeValue + "']"));
+        Assert.assertTrue(driver.getCurrentUrl().contains(pageUrl));
     }
 
     public static void validateElementTextEquals(WebElement element, String elementText) {
@@ -68,6 +64,16 @@ public class WebUtility {
     public static void validateElementTextContains(WebElement element, String elementText) {
 
         Assert.assertTrue(element.getText().contains(elementText));
+    }
+
+    public static WebElement findElementByText(String elementText) {
+
+        return driver.findElement(By.xpath("//*[contains(text(),'" + elementText + "')]"));
+    }
+
+    public static WebElement findElementByAttribute(String attributeName, String attributeValue) {
+
+        return driver.findElement(By.xpath("//*[@" + attributeName + "='" + attributeValue + "']"));
     }
 
     public static void takeScreenshot(String scenarioId) {
