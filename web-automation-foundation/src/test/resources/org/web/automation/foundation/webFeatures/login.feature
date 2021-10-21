@@ -4,7 +4,6 @@ Feature: Web [Insert Feature Name Here]
   -> Do Something
 
   Scenario: [Scenario Name] Example: Successful Login
-    Given I have opened the Browser
-    And I do something in the Website
-    When I do this in the Website
-    Then This should happen
+    Given I am in this Website - Define Context
+    When I do this in the Website - Action / Input
+    Then This should happen - Result / Output
