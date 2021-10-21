@@ -60,13 +60,7 @@ public class WebUtility {
         return driver.findElement(By.xpath("//*[@data-test-id='" + elementText + "']"));
     }
 
-    public static String randomNumber() {
-
-        int randomNumber = (int) (Math.random() * 999999);
-        return Integer.toString(randomNumber);
-    }
-
-    public static void takeScreenshot() {
+    public static void takeScreenshot(String scenarioId) {
 
         File sourceFile;
         File destinationFile;
@@ -74,10 +68,10 @@ public class WebUtility {
         // Takes Screenshot of Web Browser & Saves
         try {
             sourceFile = ((TakesScreenshot) WebUtility.getDriver()).getScreenshotAs(OutputType.FILE);
-            destinationFile = new File(WebUtility.getValue("web.screenshots") + WebUtility.randomNumber() + ".png");
+            destinationFile = new File(WebUtility.getValue("web.screenshots") + scenarioId + ".png");
             FileUtils.copyFile(sourceFile, destinationFile);
         } catch (IOException ex) {
-            System.out.println("Unable to Take Screenshot of Android Simulator");
+            System.out.println("Unable to Take Screenshot of Web Browser");
         }
 
     }

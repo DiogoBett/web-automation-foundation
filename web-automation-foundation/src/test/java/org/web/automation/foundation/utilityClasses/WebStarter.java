@@ -2,12 +2,12 @@ package org.web.automation.foundation.utilityClasses;
 
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
-import io.cucumber.java.en.Given;
+import io.cucumber.java.Before;
 
 public class WebStarter {
 
     // Cucumber Methods
-    @Given("I have opened the Browser")
+    @Before
     public void openWebBrowser() {
 
         // Starts the Web Browser
@@ -18,7 +18,7 @@ public class WebStarter {
     public void closeWebBrowser(Scenario scenario) {
 
         if (scenario.isFailed()) {
-            WebUtility.takeScreenshot();
+            WebUtility.takeScreenshot(scenario.getId());
         }
 
         // Close the Web Browser
