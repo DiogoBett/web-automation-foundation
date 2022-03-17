@@ -12,6 +12,7 @@
     <properties>
         <cucumber.version>4.7.1</cucumber.version>
         <selenium.version>3.141.59</selenium.version>
+        <restassured.version>4.5.1</restassured.version>
         <junit.version>4.13.1</junit.version>
         <commons.version>2.8.0</commons.version>
     </properties>
@@ -37,6 +38,12 @@
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restassured.version}</version>
         </dependency>
 
         <dependency>
