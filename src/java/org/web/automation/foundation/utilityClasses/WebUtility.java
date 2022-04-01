@@ -101,13 +101,13 @@ public class WebUtility {
         String operatingSystem = getValue("web.system");
 
         if (operatingSystem.equals("WINDOWS")) {
-            System.setProperty("webdriver.chrome.driver","src/test/resources/org/web/automation/foundation/browserDrivers/chromeDriverWindows.exe");
-            System.setProperty("webdriver.gecko.driver", "src/test/resources/org/web/automation/foundation/browserDrivers/firefoxDriverWindows.exe");
+            System.setProperty("webdriver.chrome.driver","src/resources/org/web/automation/foundation/browserDrivers/chromeDriverWindows.exe");
+            System.setProperty("webdriver.gecko.driver", "src/resources/org/web/automation/foundation/browserDrivers/firefoxDriverWindows.exe");
         }
 
         if (operatingSystem.equals("MACOS")) {
-            System.setProperty("webdriver.chrome.driver","src/test/resources/org/web/automation/foundation/browserDrivers/chromeDriverMac");
-            System.setProperty("webdriver.gecko.driver", "src/test/resources/org/web/automation/foundation/browserDrivers/firefoxDriverMac");
+            System.setProperty("webdriver.chrome.driver","src/resources/org/web/automation/foundation/browserDrivers/chromeDriverMac");
+            System.setProperty("webdriver.gecko.driver", "src/resources/org/web/automation/foundation/browserDrivers/firefoxDriverMac");
         }
 
     }
