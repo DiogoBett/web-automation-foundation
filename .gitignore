@@ -4,7 +4,6 @@
 .vscode
 .settings/
 .prettierrc
-test-results.xml
 
 # Logs
 logs
@@ -140,5 +139,6 @@ cucumber-report.html
 cypress/screenshots/
 cypress/videos/
 
-# Certificate
-certs/password.txt
+# Test Results
+results/
+test-results.xml
