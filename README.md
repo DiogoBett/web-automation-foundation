@@ -1,28 +1,41 @@
 ![Web Automation](/assets/banner.png)
+## web-automation-foundation
 
-## Web Automation Foundation
+### Overview:
+* A;
+* B;
+* C.
 
-This Repository has been Created to help QA Engineer's to Automate UI and
-REST API Testing using Browsers (Example: Google Chrome, Firefox, etc.), 
-Java, Selenium, Cucumber, Gherkin and Rest Assured.
+### Requirements
+* Node Version Manager (1.2.2 or above);
+* Node.js (22.15.0 or above).
 
-**Requirements:**
- - [Java Development Kit](https://www.oracle.com/pt/java/technologies/javase/javase8-archive-downloads.html) (JDK)
- - [Integrated Development Environment](https://www.jetbrains.com/idea/) (IDE)
+### Guidelines:
+* How to run:
+    1. Open a terminal inside the project and type:
+      * A;
+      * B;
+      * C.
 
-**How to Setup:** [(Full Setup Guide)](https://docs.google.com/document/d/1fo8leGX1xZh_o6tt0Pb8lWL438tECExo2lVuoRLtlK8/edit?usp=sharing)
-1. Open the Repository in the IDE and Go to the “automation” Properties File;
-2. Fill the 'web.browser' Property with the Browser you wish to use (CHROME / FIREFOX);
-3. Fill the 'web.system' Property with the Operating System you're using (WINDOWS / MACOS);
-4. Go to 'pom.xml' and Import Maven Dependencies / Turn ON Auto Import.
+* Tags
+  ```Gherkin
+  @TAG1
+    # Tag Description;
+  @TAG2
+    # Tag Description;
+  @TAG3
+    # Tag Description.
+  ```
 
-**Properties Example:**  
-![Example Properties](/assets/properties.png)
+### Key Components
+* Cypress;
+* Cucumber.
 
-**IDE Plugins:**  
-![IDE Plugins](/assets/plugins.png)
+### Documentation
+* Cypress - https://docs.cypress.io/
+* Cucumber - https://cucumber.io/docs/cucumber/
 
-**Notes:**
- - This Repository is a Maven Project;
- - Only Chrome and Firefox Drivers are Included;
- - Web UI Automation and REST API Examples are Included.
+### FAQ / Troubleshooting
+* A;
+* B;
+* C.

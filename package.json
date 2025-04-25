@@ -1,0 +1,40 @@
+{
+  "name": "web-automation-foundation",
+  "version": "2.0.0",
+  "description": "Web Automation | Foundation",
+  "main": "cypress.config.js",
+  "scripts": {
+    "cy:open:env1": "cypress open --e2e --browser chrome --env stage=env1",
+    "cy:open:env2": "cypress open --e2e --browser chrome --env stage=env2",
+    "cy:open:env3": "cypress open --e2e --browser chrome --env stage=env3",
+    "cy:run:env1": "cypress run --env stage=env1 --reporter junit --reporter-options mochaFile=results/env1/test-output-[hash].xml",
+    "cy:run:env2": "cypress run --env stage=env2 --reporter junit --reporter-options mochaFile=results/env2/test-output-[hash].xml",
+    "cy:run:env3": "cypress run --env stage=env3 --reporter junit --reporter-options mochaFile=results/env3/test-output-[hash].xml"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/step_definitions/*.{js,ts}"
+    ],
+    "html": {
+      "enabled": true
+    },
+    "filterSpecs": true,
+    "omitFiltered": true
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+    "cypress": "^14.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "cypress-junit-reporter": "^1.3.1",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiogoBett/web-automation-foundation.git"
+  },
+  "author": "Diogo Bettencourt",
+  "license": "MIT"
+}
