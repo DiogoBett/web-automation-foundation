@@ -1,24 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": [
-      "ES6",
-      "dom"
-    ],
+    "lib": ["ES6", "dom"],
     "sourceMap": true,
-    "types": [
-      "cypress",
-      "node"
-    ],
+    "types": ["cypress", "node"],
     "module": "CommonJS",
     "moduleResolution": "node",
     "preserveValueImports": false
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["node_modules"]
 }
