@@ -40,6 +40,19 @@
 - Cucumber - A tool that supports Behavior-Driven Development (BDD), allowing tests to be written in plain language for better collaboration between technical and non-technical stakeholders.
 - Node.js - A runtime environment that simplifies the build process and dependency management enabling efficient development.
 
+### Dependencies
+
+- cypress
+- typescript
+- @badeball
+  - cypress-cucumber-preprocessor
+- @bahmutov
+  - cypress-esbuild-preprocessor
+- @types
+  - node
+- cypress-junit-reporter
+  - cypress-junit-reporter
+
 ### Documentation
 
 - Cypress - https://docs.cypress.io/
