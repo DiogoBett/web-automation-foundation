@@ -4,12 +4,12 @@
   "description": "Web Automation | Foundation",
   "main": "cypress.config.js",
   "scripts": {
-    "cy:open:env1": "cypress open --e2e --browser chrome --env stage=env1",
-    "cy:open:env2": "cypress open --e2e --browser chrome --env stage=env2",
-    "cy:open:env3": "cypress open --e2e --browser chrome --env stage=env3",
-    "cy:run:env1": "cypress run --env stage=env1 --reporter junit --reporter-options mochaFile=results/env1/test-output-[hash].xml",
-    "cy:run:env2": "cypress run --env stage=env2 --reporter junit --reporter-options mochaFile=results/env2/test-output-[hash].xml",
-    "cy:run:env3": "cypress run --env stage=env3 --reporter junit --reporter-options mochaFile=results/env3/test-output-[hash].xml"
+    "cy:open:env1": "cypress open --e2e --browser chrome --env environment=env1",
+    "cy:open:env2": "cypress open --e2e --browser chrome --env environment=env2",
+    "cy:open:env3": "cypress open --e2e --browser chrome --env environment=env3",
+    "cy:run:env1": "cypress run --env environment=env1 --reporter junit --reporter-options mochaFile=results/env1/test-output-[hash].xml",
+    "cy:run:env2": "cypress run --env environment=env2 --reporter junit --reporter-options mochaFile=results/env2/test-output-[hash].xml",
+    "cy:run:env3": "cypress run --env environment=env3 --reporter junit --reporter-options mochaFile=results/env3/test-output-[hash].xml"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [

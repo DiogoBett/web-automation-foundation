@@ -18,11 +18,11 @@ async function setupNodeEvents(on, config) {
 }
 
 function setupBaseUrl(config) {
-  const stage = config.env.stage;
+  const environment = config.env.environment;
 
-  switch (stage) {
+  switch (environment) {
     case 'env1':
-      config.baseUrl = 'https://the-internet.herokuapp.com';
+      config.baseUrl = 'https://www.saucedemo.com/';
       break;
     case 'env2':
       config.baseUrl = 'https://env2.example.com';
@@ -31,7 +31,7 @@ function setupBaseUrl(config) {
       config.baseUrl = 'https://env3.example.com';
       break;
     default:
-      throw new Error(`Unknown stage: ${stage}`);
+      throw new Error(`Unknown Environment: ${environment}`);
   }
 }
 

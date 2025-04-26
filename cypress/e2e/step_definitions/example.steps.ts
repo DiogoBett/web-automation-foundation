@@ -5,5 +5,5 @@ Given('I open the homepage', () => {
 });
 
 Then('I should see the title {string}', (title: string) => {
-    cy.get('.heading').should('have.text', title);
+    cy.get('.login_logo').should('have.text', title);
 });
