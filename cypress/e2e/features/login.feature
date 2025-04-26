@@ -14,7 +14,7 @@ Feature: Login
   @Negative
   Scenario: Locked Out User
     When User enters the "lockedUser" credentials
-    Then User should remain on the login page
+    Then User should be on the login page
     And User should see a "user has been locked out" login error message
 
   @Negative

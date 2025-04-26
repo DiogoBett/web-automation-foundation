@@ -13,24 +13,10 @@ When('User enters the {string} credentials', (userType: string) => {
     });
 });
 
-Then('User should be redirected to the Products page', () => {
-    cy.url().should('include', '/inventory.html');
-});
-
-Then('User should remain on the login page', () => {
+Then('User should be on the login page', () => {
     cy.url().should('eq', `${Cypress.config('baseUrl')}`);
 });
 
 Then('User should see a {string} login error message', (errorMessage: string) => {
     cy.get('[data-test="error"]').should('be.visible').and('contain', errorMessage);
-});
-
-Then('User should be redirected to the Products page within {int} seconds', (seconds: number) => {
-    const startTime = Date.now();
-
-    cy.url().should('include', '/inventory.html').then(() => {
-        const endTime = Date.now();
-        const duration = (endTime - startTime) / 1000;
-        expect(duration).to.be.lessThan(seconds, `Page took too long to load: ${duration} seconds`);
-    });
 });
