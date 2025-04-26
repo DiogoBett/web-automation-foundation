@@ -23,14 +23,11 @@ jobs:
 
       - name: Dependencies
         run: |
-          echo "Cleaning up..."
-          rm -rf node_modules
-          echo "Installing dependencies..."
+          echo "Installing Dependencies..."
           npm install
 
       - name: Run Automated Tests
         run: |
-          npm install
           npm run cy:run:env1
 
       - name: Test Report
@@ -40,6 +37,6 @@ jobs:
           path: |
             cucumber-report.html  
             cypress/screenshots/
-            results/dev/
+            results/
           retention-days: 7
           overwrite: true
