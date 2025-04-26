@@ -9,7 +9,7 @@ Feature: Login
   @Positive
   Scenario: Standard User
     When User enters the "validUser" credentials
-    Then User should be redirected to the Products page
+    Then User should be on the Products page
 
   @Negative
   Scenario: Locked Out User
