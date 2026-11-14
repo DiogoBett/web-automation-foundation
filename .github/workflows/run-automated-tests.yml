@@ -48,8 +48,8 @@ jobs:
         with:
           name: test_report
           path: |
-            cucumber-report.html  
+            cucumber-report.html
+            cucumber-report.json
             cypress/screenshots/
-            results/
           retention-days: 7
           overwrite: true
