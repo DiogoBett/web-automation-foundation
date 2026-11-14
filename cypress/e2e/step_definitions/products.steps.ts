@@ -11,7 +11,7 @@ When('User sorts products by {string}', (sortOption: string) => {
 
 When('User adds the {string} to the cart', (productName: string) => {
   cy.fixture('products').then((products) => {
-    const product = products.products.find((p) => p.name.includes(productName));
+    const product = products.products.find((p: any) => p.name.includes(productName));
     cy.contains('.inventory_item', product.name).find('button.btn_inventory').as('btn').click();
     cy.get('@btn').should('have.text', 'Remove');
   });
@@ -19,7 +19,7 @@ When('User adds the {string} to the cart', (productName: string) => {
 
 When('User removes the {string} from the cart', (productName: string) => {
   cy.fixture('products').then((products) => {
-    const product = products.products.find((p) => p.name.includes(productName));
+    const product = products.products.find((p: any) => p.name.includes(productName));
     cy.contains('.inventory_item', product.name).find('button.btn_inventory').as('btn').click();
     cy.get('@btn').should('have.text', 'Add to cart');
   });
@@ -46,7 +46,7 @@ Then('User should verify the product list is visible', () => {
 
 Then('User should verify every product has a name, description and price', () => {
   cy.fixture('products').then((products) => {
-    products.products.forEach((product, index) => {
+    products.products.forEach((product: any, index: any) => {
       cy.get('.inventory_item')
         .eq(index)
         .within(() => {

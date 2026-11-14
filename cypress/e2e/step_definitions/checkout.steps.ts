@@ -6,7 +6,7 @@ Given('User adds {string} products to the cart', (productCount: string) => {
   cy.fixture('products').then((products) => {
     const shuffledProducts = Cypress._.shuffle(products.products);
     const addedProducts = shuffledProducts.slice(0, count);
-    Cypress.env('addedProducts', addedProducts);
+    Cypress.expose('addedProducts', addedProducts);
     addedProducts.forEach((product) => {
       cy.contains('.inventory_item', product.name).find('button.btn_inventory').as('btn').click();
       cy.get('@btn').should('have.text', 'Remove');
@@ -48,7 +48,7 @@ Then('User should be on the Checkout page', () => {
 });
 
 Then('User should verify the checkout items match the ones that were added to the cart', () => {
-  const addedProducts = Cypress.env('addedProducts');
+  const addedProducts = Cypress.expose('addedProducts');
   cy.get('.cart_item')
     .should('have.length', addedProducts.length)
     .each((item, index) => {
@@ -62,7 +62,7 @@ Then('User should verify the checkout items match the ones that were added to th
 });
 
 Then('User should verify the overview items match and have the proper total amount', () => {
-  const addedProducts = Cypress.env('addedProducts');
+  const addedProducts = Cypress.expose('addedProducts');
   let calculatedTotal = 0;
 
   cy.get('.cart_item')
