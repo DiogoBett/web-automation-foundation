@@ -10,13 +10,13 @@
 ### Requirements
 
 - Node Version Manager (1.2.2 or above);
-- Node.js (22.15.0 or above).
+- Node.js (26.13.1 or above).
 
 ### Guidelines:
 
 - How to run:
-
   1. Setup the project:
+     - `nvm install lts -g` (Installs the latest stable version of Node.js);
      - `nvm use lts` (Set 'nvm' to use latest stable version of Node.js);
      - `npm install` (Installs all project dependencies).
   2. Run the automated tests:
@@ -50,8 +50,6 @@
   - cypress-esbuild-preprocessor
 - @types
   - node
-- cypress-junit-reporter
-  - cypress-junit-reporter
 
 ### Documentation
 
@@ -61,6 +59,4 @@
 
 ### FAQ / Troubleshooting
 
-- A;
-- B;
-- C.
+- N/A.

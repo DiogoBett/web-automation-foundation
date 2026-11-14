@@ -1,7 +1,7 @@
-const { defineConfig } = require('cypress');
-const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
-const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor/esbuild');
-const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-preprocessor');
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+import { defineConfig } from 'cypress';
 
 async function setupNodeEvents(on, config) {
   await addCucumberPreprocessorPlugin(on, config);
@@ -18,40 +18,30 @@ async function setupNodeEvents(on, config) {
 }
 
 function setupBaseUrl(config) {
-  const environment = config.env.environment;
+  const environment = config.expose.environment;
 
   switch (environment) {
-    case 'env1':
-      config.baseUrl = 'https://www.saucedemo.com/';
+    case 'dev':
+      config.baseUrl = 'https://www.saucedemo.com/'; // Example Test URL
       break;
-    case 'env2':
-      config.baseUrl = 'https://env2.example.com';
+    case 'preprod':
+      config.baseUrl = 'https://preprod.example.com';
       break;
-    case 'env3':
-      config.baseUrl = 'https://env3.example.com';
+    case 'prod':
+      config.baseUrl = 'https://prod.example.com';
       break;
     default:
       throw new Error(`Unknown Environment: ${environment}`);
   }
 }
 
-module.exports = defineConfig({
-  reporter: 'junit',
-  reporterOptions: {
-    toConsole: true
-  },
-  video: false,
+export default defineConfig({
   filterSpecs: true,
+  chromeWebSecurity: true,
   omitFilteredSpecs: true,
+  watchForFileChanges: false,
   e2e: {
-    env: {},
     specPattern: '**/*.feature',
-    setupNodeEvents,
-    watchForFileChanges: true
-  },
-  retries: {
-    runMode: 1,
-    openMode: 0
-  },
-  chromeWebSecurity: false
+    setupNodeEvents
+  }
 });

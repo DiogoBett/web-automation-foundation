@@ -1,39 +1,29 @@
-declare namespace Cypress {
-  interface Chainable {
-    dataCy(value: string): Chainable;
-    getIframeBody(selector: string): Chainable;
-    openLinkInSamePage(selector: string): Chainable;
-    optional(selector: string, callback: () => void): Chainable;
+declare global {
+  namespace Cypress {
+    interface Chainable<Subject = any> {
+      openSameTab(selector: string): Chainable<JQuery<HTMLElement>>;
+      ifExists(selector: string, callback: () => void | Chainable, wait?: number): Chainable<Subject>;
+    }
   }
 }
 
-Cypress.Commands.add('getIframeBody', (selector) => {
-  cy.log('getIframeBody');
-
-  return cy
-    .get(selector, { log: false })
-    .its('0.contentDocument.body', { log: false })
-    .should('not.be.empty')
-    .then((body) => cy.wrap(body, { log: false }));
-});
-
-Cypress.Commands.add('openLinkInSamePage', (selector) => {
-  cy.log('openLinkInSamePage');
-
-  cy.get(selector)
-    .click()
-    .then(($link) => {
-      $link.removeAttr('target');
-      cy.wrap($link).click();
-    });
-});
-
-Cypress.Commands.add('optional', (selector, callback) => {
-  cy.get('body').then(($body) => {
-    if ($body.find(selector).length > 0) {
-      callback();
-    }
+Cypress.Commands.add('openSameTab', (selector) => {
+  return cy.get(selector).then(($link) => {
+    $link.removeAttr('target');
+    return cy.wrap($link).click();
   });
+});
+
+Cypress.Commands.add('ifExists', (selector: string, callback: () => void, wait = 250) => {
+  const checkForElement = (retriesRemaining: number): Cypress.Chainable =>
+    cy.get('body').then(($body) => {
+      if ($body.find(selector).length > 0) {
+        return callback();
+      } else if (retriesRemaining > 0) {
+        return cy.wait(wait).then(() => checkForElement(retriesRemaining - 1));
+      }
+    });
+  return checkForElement(3);
 });
 
 Cypress.Commands.overwrite('log', (originalFn, message) => {

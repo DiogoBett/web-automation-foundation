@@ -7,6 +7,17 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        required: true
+        type: choice
+        options:
+          - dev
+          - preprod
+          - prod
+        default: dev
 
 jobs:
   build-and-test:
@@ -14,12 +25,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '22.15.0'
+          node-version: '26.13.1'
+          cache: npm
 
       - name: Dependencies
         run: |
@@ -27,11 +39,12 @@ jobs:
           npm install
 
       - name: Run Automated Tests
-        run: |
-          npm run cy:run:env1
+        env:
+          SELECTED_ENVIRONMENT: ${{ inputs.environment || 'dev' }}
+        run: npm run "cy:run:${SELECTED_ENVIRONMENT}"
 
       - name: Test Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test_report
           path: |
