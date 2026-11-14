@@ -40,7 +40,7 @@ jobs:
 
       - name: Run Automated Tests
         env:
-          SELECTED_ENVIRONMENT: ${{ inputs.environment }}
+          SELECTED_ENVIRONMENT: ${{ inputs.environment || 'dev' }}
         run: npm run "cy:run:${SELECTED_ENVIRONMENT}"
 
       - name: Test Report
