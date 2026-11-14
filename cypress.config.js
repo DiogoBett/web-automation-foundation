@@ -1,7 +1,7 @@
-const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-preprocessor');
-const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor/esbuild');
-const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
-const { defineConfig } = require('cypress');
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+import { defineConfig } from 'cypress';
 
 async function setupNodeEvents(on, config) {
   await addCucumberPreprocessorPlugin(on, config);
@@ -35,7 +35,7 @@ function setupBaseUrl(config) {
   }
 }
 
-module.exports = defineConfig({
+export default defineConfig({
   filterSpecs: true,
   chromeWebSecurity: true,
   omitFilteredSpecs: true,
