@@ -2,6 +2,7 @@
   "name": "web-automation-foundation",
   "version": "2.0.0",
   "description": "Web Automation | Foundation",
+  "type": "module",
   "main": "cypress.config.js",
   "scripts": {
     "cy:open:dev": "cypress open --e2e --browser chrome --expose environment=dev",
